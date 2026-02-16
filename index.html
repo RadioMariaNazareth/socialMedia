@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> RMN-Social-Media </title>
+    <title>RMN-Social-Media</title>
     <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="favicon" href="https://static.wixstatic.com/media/6ec620_c2400a646c1d4734930dedd70dd77e4e~mv2.png">
+    <link rel="icon" href="https://static.wixstatic.com/media/6ec620_c2400a646c1d4734930dedd70dd77e4e~mv2.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap');
@@ -16,6 +16,15 @@
             min-height: 100vh;
             color: white;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Landscape/Wide optimization: Increase width and cap height for visibility */
+        .content-container {
+            width: 94%;
+            max-width: 800px; /* Increased from 450px for wider look */
         }
 
         .glass-card {
@@ -26,47 +35,46 @@
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
+        /* White BG Logo Container - Smaller for landscape height efficiency */
+        .logo-box {
+            background: white;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            width: 100px;
+            height: 100px;
+        }
+
         /* Hover & Touch Animation */
         .link-card:hover, .link-card:active {
-            transform: translateY(-5px) scale(1.02);
+            transform: translateY(-3px) scale(1.01);
             background: rgba(255, 255, 255, 0.12);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.1);
         }
 
         .link-card:active {
-            transform: scale(0.96);
+            transform: scale(0.98);
         }
 
-        .logo-glow {
-            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
-            animation: pulse 4s infinite ease-in-out;
-        }
-
-        /* Standardized Icon sizing for both FontAwesome and Images */
+        /* Standardized Icon sizing */
         .icon-container {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .icon-container i {
-            font-size: 32px;
+            font-size: 24px;
         }
 
         .custom-img-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
             object-fit: cover;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.9; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.03); }
         }
 
         /* Custom Colors */
@@ -77,125 +85,117 @@
         .color-whatsapp { color: #25D366; }
         .color-website { color: #60a5fa; }
         
-        /* Smooth Entrance */
         .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="flex flex-col items-center py-10 px-6">
+<body class="py-6 md:py-10">
 
-    <!-- Header / Logo -->
-    <div class="w-full max-w-md mb-10 flex flex-col items-center fade-in">
-        <div class="relative w-32 h-32 mb-6">
-            <img src="https://static.wixstatic.com/media/6ec620_9391abffda8848bc93b321f459e04732~mv2.png" alt="Radio Maria Logo" class="logo-glow w-full h-full object-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Radio_Maria.svg/1200px-Radio_Maria.svg.png'">
+    <div class="content-container">
+        <!-- Header / Logo Section - Reduced vertical margins for height efficiency -->
+        <div class="w-full mb-6 flex flex-col items-center fade-in">
+            <div class="logo-box flex items-center justify-center mb-4">
+                <img src="https://static.wixstatic.com/media/6ec620_9391abffda8848bc93b321f459e04732~mv2.png" alt="Radio Maria Logo" class="w-full h-full object-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Radio_Maria.svg/1200px-Radio_Maria.svg.png'">
+            </div>
+            <div class="h-1 w-16 bg-blue-500 rounded-full opacity-60"></div>
         </div>
-        <div class="h-1 w-16 bg-blue-500 rounded-full mt-3 opacity-50"></div>
-    </div>
 
-    <!-- MAIN APPS SECTION -->
-    <div class="w-full max-w-md space-y-4 mb-8 fade-in" style="animation-delay: 0.2s;">
-        <h2 class="text-right text-xs uppercase tracking-[0.2em] text-white font-bold opacity-70 px-2">تطبيقاتنا</h2>
-        
-        <div class="grid grid-cols-2 gap-4">
-            <!-- Apple App Store -->
-            <a href="https://apps.apple.com/il/app/%D8%B1%D8%A0%D8%AF%D9%8A%D9%88-%D9%85%D8%B1%D9%8A%D9%85-%D8%A7%D9%84%D9%86%D8%A7%D8%B5%D8%B1%D8%A9-rm-nazareth/id1525583966?l=he" target="_blank" 
-               class="link-card glass-card p-5 rounded-3xl flex flex-col items-center justify-center text-center">
-                <div class="icon-container">
-                    <i class="fab fa-apple text-white"></i>
-                </div>
-                <span class="text-xs font-bold">Apple Store </span>
-            </a>
+        <!-- MAIN APPS SECTION -->
+        <div class="w-full space-y-3 mb-8 fade-in" style="animation-delay: 0.1s;">
+            <h2 class="text-right text-[10px] uppercase tracking-[0.2em] text-white font-bold opacity-70 px-2 mb-2">تطبيقاتنا</h2>
+            
+            <!-- Grid 2 columns on mobile, 2 on landscape -->
+            <div class="grid grid-cols-2 gap-3">
+                <a href="https://apps.apple.com/il/app/%D8%B1%D8%A0%D8%AF%D9%8A%D9%88-%D9%85%D8%B1%D9%8A%D9%85-%D8%A7%D9%84%D9%86%D8%A7%D8%B5%D8%B1%D8%A9-rm-nazareth/id1525583966?l=he" target="_blank" 
+                   class="link-card glass-card p-4 rounded-2xl flex flex-col items-center justify-center text-center">
+                    <div class="icon-container">
+                        <i class="fab fa-apple text-white"></i>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase">Apple Store</span>
+                </a>
 
-            <!-- Google Play Store -->
-            <a href="https://play.google.com/store/apps/details?id=com.radiomaria.naz&hl=it&gl=US" target="_blank" 
-               class="link-card glass-card p-5 rounded-3xl flex flex-col items-center justify-center text-center">
-                <div class="icon-container">
-                    <i class="fab fa-google-play text-white"></i>
-                </div>
-                <span class="text-xs font-bold">Google Play</span>
-            </a>
+                <a href="https://play.google.com/store/apps/details?id=com.radiomaria.naz&hl=it&gl=US" target="_blank" 
+                   class="link-card glass-card p-4 rounded-2xl flex flex-col items-center justify-center text-center">
+                    <div class="icon-container">
+                        <i class="fab fa-google-play text-white"></i>
+                    </div>
+                    <span class="text-[10px] font-bold uppercase">Google Play</span>
+                </a>
+            </div>
         </div>
-    </div>
 
-    <!-- SOCIAL MEDIA GRID -->
-    <div class="w-full max-w-md space-y-4 fade-in" style="animation-delay: 0.4s;">
-        <h2 class="text-right text-xs uppercase tracking-[0.2em] text-white font-bold opacity-70 px-2">وسائل التواصل الاجتماعي</h2>
-        
-        <div class="grid grid-cols-2 gap-3">
-            <!-- Main Website -->
-            <a href="https://www.radiomariam.org.il" target="_blank" class="link-card glass-card p-4 rounded-2xl flex flex-col items-center text-center">
-                <div class="icon-container">
-                    <i class="fas fa-globe color-website"></i>
-                </div>
-                <span class="text-xs font-bold">الموقع الرسمي</span>
-            </a>
+        <!-- SOCIAL MEDIA GRID -->
+        <div class="w-full space-y-3 fade-in" style="animation-delay: 0.2s;">
+            <h2 class="text-right text-[10px] uppercase tracking-[0.2em] text-white font-bold opacity-70 px-2 mb-2">وسائل التواصل الاجتماعي</h2>
+            
+            <!-- Dynamic Grid: 2 columns on small screens, 3 columns on landscape/tablets -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <a href="https://www.radiomariam.org.il" target="_blank" class="link-card glass-card p-3 rounded-xl flex flex-col items-center text-center">
+                    <div class="icon-container">
+                        <i class="fas fa-globe color-website"></i>
+                    </div>
+                    <span class="text-[10px] font-bold">الموقع الرسمي</span>
+                </a>
 
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/radiomariamnazareth/" target="_blank" class="link-card glass-card p-4 rounded-2xl flex flex-col items-center text-center">
-                <div class="icon-container">
-                    <i class="fab fa-facebook color-facebook"></i>
-                </div>
-                <span class="text-xs font-bold">Facebook </span>
-            </a>
+                <a href="https://www.facebook.com/radiomariamnazareth/" target="_blank" class="link-card glass-card p-3 rounded-xl flex flex-col items-center text-center">
+                    <div class="icon-container">
+                        <i class="fab fa-facebook color-facebook"></i>
+                    </div>
+                    <span class="text-[10px] font-bold">Facebook</span>
+                </a>
 
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/radio_mariam_nazareth/" target="_blank" class="link-card glass-card p-4 rounded-2xl flex flex-col items-center text-center">
-                <div class="icon-container">
-                    <i class="fab fa-instagram color-instagram"></i>
-                </div>
-                <span class="text-xs font-bold">Insatgram</span>
-            </a>
+                <a href="https://www.instagram.com/radio_mariam_nazareth/" target="_blank" class="link-card glass-card p-3 rounded-xl flex flex-col items-center text-center">
+                    <div class="icon-container">
+                        <i class="fab fa-instagram color-instagram"></i>
+                    </div>
+                    <span class="text-[10px] font-bold">Instagram</span>
+                </a>
 
-            <!-- YouTube -->
-            <a href="https://www.youtube.com/channel/UC8apXBDXyWf1BxBYjTNfUoQ" target="_blank" class="link-card glass-card p-4 rounded-2xl flex flex-col items-center text-center">
-                <div class="icon-container">
-                    <i class="fab fa-youtube color-youtube"></i>
-                </div>
-                <span class="text-xs font-bold">Youtube</span>
-            </a>
+                <a href="https://www.youtube.com/channel/UC8apXBDXyWf1BxBYjTNfUoQ" target="_blank" class="link-card glass-card p-3 rounded-xl flex flex-col items-center text-center">
+                    <div class="icon-container">
+                        <i class="fab fa-youtube color-youtube"></i>
+                    </div>
+                    <span class="text-[10px] font-bold">Youtube</span>
+                </a>
 
-            <!-- Telegram -->
-            <a href="https://t.me/radiomarianaz" target="_blank" class="link-card glass-card p-4 rounded-2xl flex flex-col items-center text-center">
-                <div class="icon-container">
-                    <i class="fab fa-telegram color-telegram"></i>
-                </div>
-                <span class="text-xs font-bold">Telegram</span>
-            </a>
+                <a href="https://t.me/radiomarianaz" target="_blank" class="link-card glass-card p-3 rounded-xl flex flex-col items-center text-center">
+                    <div class="icon-container">
+                        <i class="fab fa-telegram color-telegram"></i>
+                    </div>
+                    <span class="text-[10px] font-bold">Telegram</span>
+                </a>
 
-            <!-- WhatsApp -->
-            <a href="https://wa.me/?text=Check%20out%20Radio%20Mariam%20Nazareth" target="_blank" class="link-card glass-card p-4 rounded-2xl flex flex-col items-center text-center">
-                <div class="icon-container">
-                    <i class="fab fa-whatsapp color-whatsapp"></i>
-                </div>
-                <span class="text-xs font-bold">Whatsapp</span>
-            </a>
+                <a href="https://wa.me/?text=Check%20out%20Radio%20Mariam%20Nazareth" target="_blank" class="link-card glass-card p-3 rounded-xl flex flex-col items-center text-center">
+                    <div class="icon-container">
+                        <i class="fab fa-whatsapp color-whatsapp"></i>
+                    </div>
+                    <span class="text-[10px] font-bold">Whatsapp</span>
+                </a>
 
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/radio-mariam-nazareth-16b070211/" target="_blank" class="link-card glass-card p-4 rounded-2xl flex flex-col items-center text-center">
-                <div class="icon-container">
-                    <img src="https://yt3.googleusercontent.com/i6KNxiy3gME-BulL4WnuGkTGqHuSYF8jl1WRn0rXftcJdSYK7dHKcJ3gLAaPc-KfhmLSYPwf824=s900-c-k-c0x00ffffff-no-rj" alt="LinkedIn" class="custom-img-icon">
-                </div>
-                <span class="text-xs font-bold"> LinkedIn </span>
-            </a>
+                <a href="https://www.linkedin.com/in/radio-mariam-nazareth-16b070211/" target="_blank" class="link-card glass-card p-3 rounded-xl flex flex-col items-center text-center">
+                    <div class="icon-container">
+                        <img src="https://yt3.googleusercontent.com/i6KNxiy3gME-BulL4WnuGkTGqHuSYF8jl1WRn0rXftcJdSYK7dHKcJ3gLAaPc-KfhmLSYPwf824=s900-c-k-c0x00ffffff-no-rj" alt="LinkedIn" class="custom-img-icon">
+                    </div>
+                    <span class="text-[10px] font-bold">LinkedIn</span>
+                </a>
 
-            <!-- X (Twitter) -->
-            <a href="https://twitter.com/radiomariamnzr" target="_blank" class="link-card glass-card p-4 rounded-2xl flex flex-col items-center text-center">
-                <div class="icon-container">
-                    <img src="https://img.freepik.com/premium-vector/twitter-new-x-logo-design-vector_1340851-70.jpg?semt=ais_user_personalization&w=740&q=80" alt="X" class="custom-img-icon">
-                </div>
-                <span class="text-xs font-bold"> X </span>
-            </a>
+                <a href="https://twitter.com/radiomariamnzr" target="_blank" class="link-card glass-card p-3 rounded-xl flex flex-col items-center text-center">
+                    <div class="icon-container">
+                        <img src="https://img.freepik.com/premium-vector/twitter-new-x-logo-design-vector_1340851-70.jpg?semt=ais_user_personalization&w=740&q=80" alt="X" class="custom-img-icon">
+                    </div>
+                    <span class="text-[10px] font-bold">X</span>
+                </a>
+            </div>
         </div>
-    </div>
 
-    <!-- Spacer for bottom padding -->
-    <div class="h-20"></div>
+        <div class="h-10"></div>
+    </div>
 
 </body>
 </html>
